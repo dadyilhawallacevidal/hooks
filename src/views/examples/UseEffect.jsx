@@ -9,9 +9,9 @@ function calculaFatorial(n) {
     return calculaFatorial((n - 1)) * n;
 }
 
-function calcularStatus(n){
-    return n % 2 === 0 ? "Par" : "Ímpar";
-}
+// function calcularStatus(n){
+//     return n % 2 === 0 ? "Par" : "Ímpar";
+// }
 
 const UseEffect = (props) => {
     // Ex #01

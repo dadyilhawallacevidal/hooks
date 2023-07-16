@@ -25,7 +25,7 @@ const UseState = (props) => {
             <SectionTitle
                 title="Exercício #02"
             />
-            {showName != "" && <div style={{ fontSize: "40px" }}>{showName}</div>}
+            {showName !== "" && <div style={{ fontSize: "40px" }}>{showName}</div>}
             <input className='input' type='text' value={name} onChange={(e) => setName(e.target.value)} />
             <div>
                 <button className='btn' onClick={() => setShowName(name)}>Ok</button>
