@@ -14,7 +14,7 @@ const UseContext = (props) => {
     }
 
     const { number, setNumber } = useContext(AppContext);
-    const { text, setText } = useContext(AppContext);
+    const { text } = useContext(AppContext);
 
     return (
         <div className="UseContext">

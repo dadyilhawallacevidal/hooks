@@ -1,40 +1,10 @@
 import React, { useReducer, useState } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
-
-
-const initialState = {
-    cart: [{}],
-    products: [{}, {}],
-    user: null,
-    other: "...",
-    //foco...
-    number: 0
-}
-
-
-
-const reducer = (state, action) => {
-    switch (action.type) {
-        case 'Add2':
-            return { ...state, number: state.number + 2 }
-        case 'Multi7':
-            return { ...state, number: state.number * 7 }
-        case 'Div25':
-            return { ...state, number: state.number / 25 }
-        case 'Int':
-            return { ...state, number: parseInt(state.number) }
-        case 'AddN':
-            return { ...state, number: state.number + parseInt(action.payload) }
-        case 'login':
-            return { ...state, user: { name: action.payload } }
-
-        default:
-            return state;
-    }
-}
+import { initialState, allReducers } from '../../store';
+import { Add2, Login } from "../../store/actions/";
 
 const UseReducer = (props) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(allReducers, initialState);
     const [userName, setUserName] = useState("");
     const [number, setNumber] = useState(0);
     return (
@@ -45,11 +15,8 @@ const UseReducer = (props) => {
             />
 
             <div className="center">
-
                 {state.user && state.user.name !== "" ? <span className="text">{state.user.name}</span> :
                     <span className='text'>Sem Usuário</span>}
-
-
                 <span className="text">
                     {state.number}
                 </span>
@@ -72,13 +39,13 @@ const UseReducer = (props) => {
                 <div>
                     <button
                         className='btn'
-                        onClick={() => dispatch({ type: "login", payload: userName })}
+                        onClick={() => Login(dispatch, userName)}
                     >
                         Login
                     </button>
                     <button
                         className="btn"
-                        onClick={() => dispatch({ type: "Add2" })}
+                        onClick={() => Add2(dispatch)}
                     >
                         +2
                     </button>
@@ -106,7 +73,6 @@ const UseReducer = (props) => {
                     >
                         AddN
                     </button>
-
                 </div>
             </div>
         </div>
